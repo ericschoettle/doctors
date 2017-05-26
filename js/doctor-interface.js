@@ -1,8 +1,13 @@
 var getDoctors = require('./../js/doctor.js').getDoctors;
 
 var displayDoctors = function(doctors) {
-  debugger
-  $('#showDoctors').append(doctors)
+  doctors.forEach(function(doctor) {
+    var text = "<br>Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name + ", " +
+    doctor.profile.title + " practices " + doctor.specialties[0].name + " at: <br>" +
+    doctor.practices[0].name + " at " + doctor.practices[0].lat + ", " +  doctor.practices[0].lon + "<br>"
+
+    $('#showDoctors').append(text)
+  })
 }
 
 $(document).ready(function() {
