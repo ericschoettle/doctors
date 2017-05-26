@@ -1,0 +1,15 @@
+What I want my code to do:
+
+1. Get doctors based on a fixed location and a query for search.
+2. Separate front end and back end, so that the form is handled on the front end and the API call on the back end, with the results printed via a callback to the front end.
+3. Gather the coordinates of the search results
+4. Loop through the search result coordinates, plotting them on a map with google maps API.
+5. Give those markers numbers so that they can match up with the list of doctors I'm returning. Or even better, give them links to more info on the doctors.
+6. Use IP address location to look up user location, and feed that in to the search.
+
+Other things I need to do:
+
+1. Git commits.
+2. README
+3. Styling
+4. submit on epicenter. 
