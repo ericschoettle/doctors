@@ -12,7 +12,7 @@ var displayDoctors = function(doctors) {
 
     locations.push(doctor.practices[0])
   })
-  
+  getMaps(locations)
 }
 
 
