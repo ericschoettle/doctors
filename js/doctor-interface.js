@@ -1,8 +1,10 @@
 var getDoctors = require('./../js/doctor.js').getDoctors;
+var locationSuccess = require('./../js/doctor.js').locationSuccess;
+var locationError = require('./../js/doctor.js').locationError;
 var getMaps = require('./../js/maps.js').getMaps;
 
 
-var displayDoctors = function(doctors) {
+var displayDoctors = function(doctors, center) {
   var locations = []
   doctors.forEach(function(doctor) {
     var text = "<br>Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name + ", " +
@@ -12,14 +14,25 @@ var displayDoctors = function(doctors) {
 
     locations.push(doctor.practices[0])
   })
-  getMaps(locations)
+  getMaps(locations, center)
 }
 
-
-$(document).ready(function() {
+$(function() {
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 15000,
+    maximumAge: 0
+  };
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(locationSuccess, locationError, options)
+  } else {
+    alert("please turn on geolocation for your browser")
+  }
+  debugger
   $('#doctorSearch').submit(function(event) {
     event.preventDefault()
     var medicalIssue = $('#medicalIssue').val()
-    getDoctors(medicalIssue, displayDoctors)
+    debugger
+    getDoctors(medicalIssue, displayDoctors, coords)
   });
 });

@@ -1,15 +1,13 @@
 var mapApiKey = require('./../.env').mapApiKey;
 
 $(function(){
-  debugger;
   var apiLink = "https://maps.googleapis.com/maps/api/js?key=" + mapApiKey;
   var apiScript = document.createElement('script');
   apiScript.src = apiLink;
   document.getElementsByTagName('head')[0].appendChild(apiScript);
 });
 
-exports.getMaps = function(locations) {
-
+exports.getMaps = function(locations, center) {
   var map, infoWindow;
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
@@ -28,24 +26,25 @@ exports.getMaps = function(locations) {
     });
   });
 
-  debugger
-  // google.maps.event.addListener(marker, 'click', function() {
-  //   infowindow.open(map, marker);
-  // });
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      infoWindow.setPosition(pos);
-      infoWindow.open(map);
-      map.setCenter(pos);
-    });
-  }
-};
+//   debugger
+//   // google.maps.event.addListener(marker, 'click', function() {
+//   //   infowindow.open(map, marker);
+//   // });
+//
+//   if (navigator.geolocation) {
+//
+//     navigator.geolocation.getCurrentPosition(function(position) {
+//       var pos = {
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude
+//       };
+//
+//       infoWindow.setPosition(pos);
+//       infoWindow.open(map);
+//       map.setCenter(pos);
+//     });
+//   }
+// };
 
 
 // if (navigator.geolocation) {
