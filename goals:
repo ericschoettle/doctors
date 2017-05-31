@@ -1,9 +1,8 @@
-What I want my code to do:
+to do:
 
-3. Gather the coordinates of the search results
-4. Loop through the search result coordinates, plotting them on a map with google maps API.
-5. Give those markers numbers so that they can match up with the list of doctors I'm returning. Or even better, give them links to more info on the doctors.
-6. Use IP address location to look up user location, and feed that in to the search.
+1. Get bootstrap working
+2. Get google API key right
+3. Get the search to work with the lat and long from google
 
 Other things I need to do:
 

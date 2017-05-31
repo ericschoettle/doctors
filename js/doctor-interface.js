@@ -1,8 +1,8 @@
 var getDoctors = require('./../js/doctor.js').getDoctors;
 var locationSuccess = require('./../js/doctor.js').locationSuccess;
 var locationError = require('./../js/doctor.js').locationError;
+var coords = require('./../js/doctor.js').coords;
 var getMaps = require('./../js/maps.js').getMaps;
-
 
 var displayDoctors = function(doctors, center) {
   var locations = []
@@ -25,6 +25,7 @@ $(function() {
   };
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(locationSuccess, locationError, options)
+    debugger
   } else {
     alert("please turn on geolocation for your browser")
   }
@@ -32,7 +33,6 @@ $(function() {
   $('#doctorSearch').submit(function(event) {
     event.preventDefault()
     var medicalIssue = $('#medicalIssue').val()
-    debugger
     getDoctors(medicalIssue, displayDoctors, coords)
   });
 });
