@@ -1,7 +1,7 @@
 var getDoctors = require('./../js/doctor.js').getDoctors;
-var locationSuccess = require('./../js/doctor.js').locationSuccess;
-var locationError = require('./../js/doctor.js').locationError;
-var coords = require('./../js/doctor.js').coords;
+// var success = require('./../js/geolocation.js').locationSuccess;
+// var error = require('./../js/geolocation.js').locationError;
+// var coords = require('./../js/geolocation.js').coords;
 var getMaps = require('./../js/maps.js').getMaps;
 
 var displayDoctors = function(doctors, center) {
@@ -18,20 +18,32 @@ var displayDoctors = function(doctors, center) {
 }
 
 $(function() {
+  coords = {}
   var options = {
     enableHighAccuracy: true,
     timeout: 15000,
     maximumAge: 0
   };
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(locationSuccess, locationError, options)
+
+  var success = function(position) {
+    coords = {lat: position.coords.latitude.toFixed(3), lon: position.coords.latitude.toFixed(3)}
     debugger
+  };
+
+  var error = function(err) {
+    alert("Error in geolocation - defaulting to a search of Seattle, because it's the best.");
+    coords = {lat: 47.6080514, lon: -122.3334927};
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error, options);
   } else {
     alert("please turn on geolocation for your browser")
   }
-  debugger
+
   $('#doctorSearch').submit(function(event) {
     event.preventDefault()
+    debugger
     var medicalIssue = $('#medicalIssue').val()
     getDoctors(medicalIssue, displayDoctors, coords)
   });
