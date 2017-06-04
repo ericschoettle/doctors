@@ -9,10 +9,10 @@ $(function(){
 
 exports.getMaps = function(locations, center) {
   var map, infoWindow;
-  debugger
+  debugger;
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: {lat: locations[0].lat, lng: locations[0].lon},
+    zoom: 10,
+    center: {lat: parseFloat(center.lat), lng: parseFloat(center.lon)},
     mapTypeId: 'terrain'
   });
 
@@ -25,4 +25,4 @@ exports.getMaps = function(locations, center) {
       content: '<p>' + location.name + '</p>'
     });
   });
-}
+};
