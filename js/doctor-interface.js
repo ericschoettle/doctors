@@ -5,12 +5,13 @@ var getDoctors = require('./../js/doctor.js').getDoctors;
 var getMaps = require('./../js/maps.js').getMaps;
 
 var displayDoctors = function(doctors, center) {
-  debugger;
   var locations = [];
   doctors.forEach(function(doctor) {
+    var phone = doctor.practices[0].phones[0].number;
+    var phoneString = "(" + phone.slice(0,3) + ") " + phone.slice(3,6) + "-" + phone.slice(6);
     var text = "<br>Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name + ", " +
     doctor.profile.title + " practices " + doctor.specialties[0].name + " at: <br>" +
-    doctor.practices[0].name + " at " + doctor.practices[0].lat + ", " +  doctor.practices[0].lon + "<br>";
+    doctor.practices[0].name + "<br> Phone: " + phoneString + "<br>";
     $('#showDoctors').append(text);
 
     locations.push(doctor.practices[0]);
