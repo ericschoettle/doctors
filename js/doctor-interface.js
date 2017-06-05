@@ -4,21 +4,6 @@ var getDoctors = require('./../js/doctor.js').getDoctors;
 // var coords = require('./../js/geolocation.js').coords;
 var getMaps = require('./../js/maps.js').getMaps;
 
-var displayDoctors = function(doctors, center) {
-  var locations = [];
-  doctors.forEach(function(doctor) {
-    var phone = doctor.practices[0].phones[0].number;
-    var phoneString = "(" + phone.slice(0,3) + ") " + phone.slice(3,6) + "-" + phone.slice(6);
-    var text = "<br>Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name + ", " +
-    doctor.profile.title + " practices " + doctor.specialties[0].name + " at: <br>" +
-    doctor.practices[0].name + "<br> Phone: " + phoneString + "<br>";
-    $('#showDoctors').append(text);
-
-    locations.push(doctor.practices[0]);
-  });
-  getMaps(locations, center);
-};
-
 $(function() {
   coords = {};
   var options = {
@@ -45,6 +30,6 @@ $(function() {
   $('#doctorSearch').submit(function(event) {
     event.preventDefault();
     var medicalIssue = $('#medicalIssue').val();
-    getDoctors(medicalIssue, displayDoctors, coords);
+    getDoctors(medicalIssue, getMaps, coords);
   });
 });
