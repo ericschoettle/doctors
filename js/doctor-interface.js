@@ -1,8 +1,7 @@
 var getDoctors = require('./../js/doctor.js').getDoctors;
-// var success = require('./../js/geolocation.js').locationSuccess;
-// var error = require('./../js/geolocation.js').locationError;
-// var coords = require('./../js/geolocation.js').coords;
-var getMaps = require('./../js/maps.js').getMaps;
+var success = require('./../js/geolocation.js').locationSuccess;
+var error = require('./../js/geolocation.js').locationError;
+var getMaps = require('./../js/map-interface.js').getMaps;
 
 $(function() {
   coords = {};

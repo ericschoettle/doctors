@@ -22,7 +22,8 @@ _Once you have completed Node installation, components can be downloaded and ins
 
 * _"NPM install" - installs Node Package Manager_
 * _"Bower install" - installs Bower_
-* _"gulp serve" - builds the application, initializes a server, and opens a web-browser tab containing the app_
+* _"gulp build" - builds the application_
+* _"gulp serve" - initializes a server, and opens a web-browser tab containing the app_
 
 ## Support and contact details
 
